@@ -1,0 +1,60 @@
+name: Build Endless Brood 1.2.12 TREMOR
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/Build-EndlessBrood-1.2.12-TREMOR.yml'
+      - 'EndlessBrood-1.7.10-v1.2.12-TREMOR-SOURCE.zip'
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 40
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Verify and unpack source
+        shell: bash
+        run: |
+          set -euo pipefail
+          file='EndlessBrood-1.7.10-v1.2.12-TREMOR-SOURCE.zip'
+          if [[ ! -f "$file" ]]; then
+            echo '::error::Upload EndlessBrood-1.7.10-v1.2.12-TREMOR-SOURCE.zip to repository ROOT (next to README.md).'
+            exit 1
+          fi
+          echo 'c1ec2054b6731827487264c631dc4754ebb2a8a9d18c2cd2b348366774827c7e  EndlessBrood-1.7.10-v1.2.12-TREMOR-SOURCE.zip' | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/endlessbrood-src"
+          unzip -q "$file" -d "$RUNNER_TEMP/endlessbrood-src"
+          grep -q '^version=1.2.12-tremor$' "$RUNNER_TEMP/endlessbrood-src/gradle.properties"
+          test -f "$RUNNER_TEMP/endlessbrood-src/build.gradle"
+      - name: Install Java 8
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '8'
+      - name: Source smoke tests
+        shell: bash
+        run: |
+          cd "$RUNNER_TEMP/endlessbrood-src"
+          bash scripts/smoke-test.sh
+      - name: Install Gradle 4.4.1
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '4.4.1'
+      - name: Build Forge 1.7.10 JAR
+        shell: bash
+        run: |
+          cd "$RUNNER_TEMP/endlessbrood-src"
+          gradle --no-daemon --stacktrace clean setupDecompWorkspace build
+      - name: Verify JAR
+        shell: bash
+        run: |
+          ls -lh "$RUNNER_TEMP/endlessbrood-src/build/libs/"
+          test -n "$(find "$RUNNER_TEMP/endlessbrood-src/build/libs/" -maxdepth 1 -type f -name '*.jar' -print -quit)"
+      - name: Upload mod JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: EndlessBrood-1.7.10-1.2.12-TREMOR
+          path: ${{ runner.temp }}/endlessbrood-src/build/libs/*.jar
+          if-no-files-found: error

@@ -1,0 +1,1 @@
+package net.minecraft.util;public class MathHelper {public static float clamp_float(float x,float a,float b){return Math.max(a,Math.min(x,b));}public static float sin(float x){return (float)Math.sin(x);}public static float cos(float x){return (float)Math.cos(x);}}

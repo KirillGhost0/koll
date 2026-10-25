@@ -1,0 +1,22 @@
+Endless Brood 1.0.0-rc2 — preliminary OFFLINE checks
+Date: 2026-10-25
+
+COMMAND: bash scripts/smoke-test.sh
+RESULT: PASS (on OpenJDK 21 using Java 8 source/target flags)
+
+Covered by pure Java assertions:
+- immutable obsidian, bedrock, end portal frame, modded machines
+- staged digging, extreme BigInteger levels and mutation boundaries
+- damage-adaptation cap, combat points/day cap, colony tiers
+- existing base rules: 768-block distance and extreme coordinate values
+- installation-relative 3-day grace (including already established worlds)
+- no premature stage growth after grace begins
+
+Covered by test stubs: model/renderer syntax with fake Minecraft client API.
+Covered by image checks: PNG headers and dimensions for six skins, five blocks and four items.
+
+NOT DONE: full Forge 1.7.10 compilation or runtime; HBM NTM interoperability;
+old-world generation and loaded/unloaded chunk behavior in a real server;
+2-player save/load and in-game performance.
+
+IMPORTANT: PASS is NOT evidence of an installable, compatible game mod.

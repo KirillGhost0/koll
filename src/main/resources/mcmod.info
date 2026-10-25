@@ -1,0 +1,11 @@
+[
+  {
+    "modid": "endlessbrood",
+    "name": "Endless Brood",
+    "description": "An original evolving parasite invasion with persistent, uncapped evolutionary stages.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "authorList": ["Endless Brood project"],
+    "dependencies": []
+  }
+]

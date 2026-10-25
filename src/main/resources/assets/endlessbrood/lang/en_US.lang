@@ -1,0 +1,13 @@
+entity.endlessbrood.parasite.name=Brood Parasite
+item.endlessbrood.parasiteEgg.stalker.name=Stalker Spawn Egg
+item.endlessbrood.parasiteEgg.scuttler.name=Scuttler Spawn Egg
+item.endlessbrood.parasiteEgg.bulwark.name=Bulwark Spawn Egg
+item.endlessbrood.parasiteEgg.thornback.name=Thornback Spawn Egg
+item.endlessbrood.parasiteEgg.colossus.name=Colossus Spawn Egg
+item.endlessbrood.chitin.name=Brood Chitin
+item.endlessbrood.serum.name=Anti-parasite Serum
+tile.endlessbrood.nest.name=Brood Nest
+tile.endlessbrood.taintedSoil.name=Tainted Soil
+tile.endlessbrood.ward.name=Brood Repelling Ward
+item.endlessbrood.scanner.name=Brood Signal Scanner
+item.endlessbrood.parasiteEgg.matriarch.name=Brood Matriarch Spawn Egg

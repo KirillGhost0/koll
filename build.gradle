@@ -1,0 +1,40 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url = 'https://maven.minecraftforge.net/' }
+    }
+    dependencies {
+        classpath ('com.anatawa12.forge:ForgeGradle:1.2-1.1.+') {
+            changing = true
+        }
+    }
+}
+
+apply plugin: 'forge'
+
+version = project.version
+group = project.group
+archivesBaseName = 'EndlessBrood-1.7.10'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+minecraft {
+    version = '1.7.10-10.13.4.1614-1.7.10'
+    runDir = 'run'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'mcversion', project.minecraft.version
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'version': project.version, 'mcversion': '1.7.10'
+    }
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}

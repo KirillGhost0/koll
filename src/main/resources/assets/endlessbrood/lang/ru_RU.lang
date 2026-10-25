@@ -1,0 +1,13 @@
+entity.endlessbrood.parasite.name=Порождение роя
+item.endlessbrood.parasiteEgg.stalker.name=Яйцо сталкера (Endless Brood)
+item.endlessbrood.parasiteEgg.scuttler.name=Яйцо ползуна (Endless Brood)
+item.endlessbrood.parasiteEgg.bulwark.name=Яйцо бастиона (Endless Brood)
+item.endlessbrood.parasiteEgg.thornback.name=Яйцо шипастого (Endless Brood)
+item.endlessbrood.parasiteEgg.colossus.name=Яйцо колосса (Endless Brood)
+item.endlessbrood.chitin.name=Хитин роя
+item.endlessbrood.serum.name=Противопаразитарная сыворотка
+tile.endlessbrood.nest.name=Гнездо роя
+tile.endlessbrood.taintedSoil.name=Заражённая почва
+tile.endlessbrood.ward.name=Подавитель роя
+item.endlessbrood.scanner.name=Сканер сигналов роя
+item.endlessbrood.parasiteEgg.matriarch.name=Яйцо матки роя (Endless Brood)

@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
-import net.minecraft.world.storage.WorldSavedData;
+import net.minecraft.world.WorldSavedData;
 import net.minecraftforge.common.DimensionManager;
 
 /** Persistent points are arbitrary precision: no final stage, no integer overflow. */
